@@ -18,11 +18,12 @@ class ViewController: UIViewController {
     
     @IBAction func judgeButton(_ sender: Any) {
         let sliderValue = String(Int(slider.value))
-        if randomLabel.text == sliderValue {
+        guard randomLabel.text != sliderValue else {
             judge(message: "あたり！あなたの値は\(sliderValue)")
-        } else {
-            judge(message: "ハズレ！あなたの値は\(sliderValue)")
+            random()
+            return
         }
+        judge(message: "ハズレ！あなたの値は\(sliderValue)")
         random()
     }
     
